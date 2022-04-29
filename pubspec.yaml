@@ -1,0 +1,29 @@
+name: inkin
+description: A personal website.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 0.1.0
+
+environment:
+  sdk: ">=2.16.2 <3.0.0"
+
+dependencies:
+  #app_state: ^0.3.2
+  app_state:
+    path: '../flutter-app-state'
+  google_fonts: ^2.3.2
+  keyed_collection_widgets: ^0.2.0
+  model_interfaces: ^0.1.4
+
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^1.0.0
+
+flutter:
+  uses-material-design: true
