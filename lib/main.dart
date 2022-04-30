@@ -1,6 +1,9 @@
 import 'package:app_state/app_state.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
+import 'firebase_options.dart'; // Generated with CLI installation, https://firebase.flutter.dev/docs/cli
+import 'locator.dart';
 import 'pages/contact/page.dart';
 import 'pages/home/screen.dart';
 import 'pages/projects/page.dart';
@@ -11,7 +14,14 @@ import 'theme/theme.dart';
 
 final pageStacksBloc = PageStacksBloc();
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  await initializeServiceLocator();
+
   pageStacksBloc.addPageStack(
     TabEnum.projects.name,
     PageStackBloc<PageConfiguration>(

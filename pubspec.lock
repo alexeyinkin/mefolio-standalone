@@ -4,7 +4,7 @@ packages:
   app_state:
     dependency: "direct main"
     description:
-      path: "../flutter-app-state"
+      path: "../../flutter-app-state"
       relative: true
     source: path
     version: "0.3.2"
@@ -43,6 +43,27 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0"
+  cloud_firestore:
+    dependency: "direct main"
+    description:
+      name: cloud_firestore
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.1.13"
+  cloud_firestore_platform_interface:
+    dependency: transitive
+    description:
+      name: cloud_firestore_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.5.4"
+  cloud_firestore_web:
+    dependency: transitive
+    description:
+      name: cloud_firestore_web
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.6.13"
   collection:
     dependency: transitive
     description:
@@ -78,6 +99,27 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.1.2"
+  firebase_core:
+    dependency: transitive
+    description:
+      name: firebase_core
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.15.0"
+  firebase_core_platform_interface:
+    dependency: transitive
+    description:
+      name: firebase_core_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.2.5"
+  firebase_core_web:
+    dependency: transitive
+    description:
+      name: firebase_core_web
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.6.2"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -95,6 +137,18 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_web_plugins:
+    dependency: transitive
+    description: flutter
+    source: sdk
+    version: "0.0.0"
+  get_it:
+    dependency: "direct main"
+    description:
+      name: get_it
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "7.2.0"
   google_fonts:
     dependency: "direct main"
     description:
@@ -116,6 +170,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.0"
+  js:
+    dependency: transitive
+    description:
+      name: js
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.6.3"
   keyed_collection_widgets:
     dependency: "direct main"
     description:
@@ -151,6 +212,27 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.7.0"
+  model_fetch:
+    dependency: "direct main"
+    description:
+      name: model_fetch
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.0"
+  model_fetch_firestore:
+    dependency: "direct main"
+    description:
+      name: model_fetch_firestore
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.0"
+  model_fetch_flutter:
+    dependency: "direct main"
+    description:
+      name: model_fetch_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.0"
   model_interfaces:
     dependency: "direct main"
     description:
@@ -236,7 +318,7 @@ packages:
     source: hosted
     version: "4.2.4"
   rxdart:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: rxdart
       url: "https://pub.dartlang.org"
@@ -303,6 +385,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.1"
+  visibility_detector:
+    dependency: transitive
+    description:
+      name: visibility_detector
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.2"
   win32:
     dependency: transitive
     description:
@@ -319,4 +408,4 @@ packages:
     version: "0.2.0+1"
 sdks:
   dart: ">=2.16.2 <3.0.0"
-  flutter: ">=2.10.0"
+  flutter: ">=2.10.5"

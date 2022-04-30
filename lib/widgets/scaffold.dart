@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../theme/theme.dart';
-import '../widgets/padded_scrollable.dart';
+import '../widgets/my_padding.dart';
 
 class MyScaffold extends StatelessWidget {
   final Widget body;
@@ -20,11 +20,12 @@ class MyScaffold extends StatelessWidget {
             Text(
               "Alexey Inkin",
               style: AppStyle.h1,
-              //style: Theme.of(context).textTheme.headline1,
             ),
             Container(height: 1, color: AppStyle.colorBlack),
-            PaddedScrollable(
-              child: body,
+            Expanded(
+              child: MyPadding(
+                child: body,
+              ),
             ),
           ],
         ),

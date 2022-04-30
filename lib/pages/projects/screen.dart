@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../widgets/project_list.dart';
 import '../../widgets/scaffold.dart';
 import 'bloc.dart';
 
@@ -11,7 +12,7 @@ class ProjectsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MyScaffold(
-      body: const Text('projects'),
+      body: ProjectListWidget(),
     );
   }
 }
