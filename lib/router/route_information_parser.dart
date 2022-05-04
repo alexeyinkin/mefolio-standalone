@@ -1,6 +1,7 @@
 import 'package:app_state/app_state.dart';
 import 'package:flutter/widgets.dart';
 
+import '../pages/project/configurations.dart';
 import '../pages/projects/configurations.dart';
 
 class MyRouteInformationParser extends PageStacksRouteInformationParser {
@@ -11,6 +12,8 @@ class MyRouteInformationParser extends PageStacksRouteInformationParser {
 
   PageConfiguration _parseTopPageConfiguration(RouteInformation ri) {
     return
+        ProjectPageConfiguration.tryParse(ri) ??
+
         // The default page if nothing worked.
         const ProjectsPageConfiguration();
   }

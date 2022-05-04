@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../main.dart';
 import '../models/project.dart';
+import '../pages/project/page.dart';
 import '../theme/theme.dart';
+import 'clickable.dart';
 import 'tags.dart';
 
 class ProjectCard extends StatelessWidget {
@@ -16,9 +19,12 @@ class ProjectCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 20),
-      child: LayoutBuilder(builder: _buildWithLayout),
+    return ClickableWidget(
+      onTap: _onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 20),
+        child: LayoutBuilder(builder: _buildWithLayout),
+      ),
     );
   }
 
@@ -97,5 +103,9 @@ class ProjectCard extends StatelessWidget {
       alignment: Alignment.centerRight,
       child: TagsWidget(tags: project.tags),
     );
+  }
+
+  void _onTap() {
+    pageStacksBloc.currentStackBloc?.push(ProjectPage(id: project.id));
   }
 }

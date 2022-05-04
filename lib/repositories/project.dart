@@ -5,10 +5,31 @@ import '../filters/project.dart';
 import '../models/project.dart';
 import 'abstract.dart';
 
-class ProjectRepository extends AbstractRepository<Project, ProjectFilter> {
+class ProjectRepository
+    extends AbstractFirestoreRepository<Project, ProjectFilter> {
+  @override
+  CollectionReference<Map<String, dynamic>> getCollection() {
+    return FirebaseFirestore.instance.collection('projects');
+  }
+
   @override
   ProjectQueryBuilder createQueryBuilder(ProjectFilter filter) {
     return ProjectQueryBuilder(filter);
+  }
+
+  static Project fromFirestoreStatic(
+    DocumentSnapshot<Map<String, dynamic>> snapshot,
+    SnapshotOptions? options,
+  ) {
+    return Project.fromIdAndMap(snapshot.id, snapshot.data() ?? {});
+  }
+
+  @override
+  Project fromFirestore(
+    DocumentSnapshot<Map<String, dynamic>> snapshot,
+    SnapshotOptions? options,
+  ) {
+    return fromFirestoreStatic(snapshot, options);
   }
 }
 
@@ -26,22 +47,8 @@ class ProjectQueryBuilder extends QueryBuilder<Project> {
 
   static Query<Project> _createEmptyQuery() {
     return FirebaseFirestore.instance.collection('projects').withConverter(
-          fromFirestore: fromFirestore,
-          toFirestore: toFirestore,
+          fromFirestore: ProjectRepository.fromFirestoreStatic,
+          toFirestore: (_, __) => throw UnimplementedError(),
         );
-  }
-
-  static Project fromFirestore(
-    DocumentSnapshot<Map<String, dynamic>> snapshot,
-    SnapshotOptions? options,
-  ) {
-    return Project.fromIdAndMap(snapshot.id, snapshot.data() ?? {});
-  }
-
-  static Map<String, Object?> toFirestore(
-    Project value,
-    SetOptions? options,
-  ) {
-    throw UnimplementedError();
   }
 }

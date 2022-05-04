@@ -9,7 +9,6 @@ environment:
   sdk: ">=2.16.2 <3.0.0"
 
 dependencies:
-  #app_state: ^0.3.2
   cloud_firestore: ^3.1.13
   get_it: ^7.2.0
   google_fonts: ^2.3.2
@@ -17,14 +16,15 @@ dependencies:
   url_strategy: ^0.2.0
 
 # Our packages:
+  app_state: ^0.3.3
   keyed_collection_widgets: ^0.2.0
   model_interfaces: ^0.1.4
-  model_fetch: ^0.1.0
-  model_fetch_firestore: ^0.1.0
-  model_fetch_flutter: ^0.1.0
+  model_fetch: ^0.2.0
+  model_fetch_firestore: ^0.2.0
+  model_fetch_flutter: ^0.2.0
 
-  app_state:
-    path: '../../flutter-app-state'
+#  app_state:
+#    path: '../../flutter-app-state'
 #  model_fetch:
 #    path: '../../dart-model-fetch/model_fetch'
 #  model_fetch_firestore:

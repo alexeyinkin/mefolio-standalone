@@ -4,10 +4,10 @@ packages:
   app_state:
     dependency: "direct main"
     description:
-      path: "../../flutter-app-state"
-      relative: true
-    source: path
-    version: "0.3.2"
+      name: app_state
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.3"
   async:
     dependency: transitive
     description:
@@ -218,21 +218,21 @@ packages:
       name: model_fetch
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.0"
+    version: "0.2.0"
   model_fetch_firestore:
     dependency: "direct main"
     description:
       name: model_fetch_firestore
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.0"
+    version: "0.2.0"
   model_fetch_flutter:
     dependency: "direct main"
     description:
       name: model_fetch_flutter
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.0"
+    version: "0.2.0"
   model_interfaces:
     dependency: "direct main"
     description:
