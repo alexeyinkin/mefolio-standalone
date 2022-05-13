@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:url_strategy/url_strategy.dart';
 
+import 'filters/project.dart';
 import 'firebase_options.dart'; // Generated with CLI installation, https://firebase.flutter.dev/docs/cli
 import 'locator.dart';
 import 'pages/contact/page.dart';
@@ -27,7 +28,7 @@ void main() async {
   pageStacksBloc.addPageStack(
     TabEnum.projects.name,
     PageStackBloc<PageConfiguration>(
-      bottomPage: ProjectsPage(),
+      bottomPage: ProjectsPage(filter: const ProjectFilter()),
       createPage: PageFactory.createPage,
     ),
   );

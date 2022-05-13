@@ -1,6 +1,7 @@
 import 'package:app_state/app_state.dart';
 import 'package:flutter/widgets.dart';
 
+import '../../filters/project.dart';
 import '../../router/tab_enum.dart';
 import '../projects/configurations.dart';
 import 'page.dart';
@@ -44,7 +45,7 @@ class ProjectPageConfiguration extends PageConfiguration {
   PageStackConfiguration get defaultStackConfiguration {
     return PageStackConfiguration(
       pageConfigurations: [
-        const ProjectsPageConfiguration(),
+        ProjectsPageConfiguration(filter: const ProjectFilter()),
         this,
       ],
     );

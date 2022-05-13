@@ -1,5 +1,7 @@
 import 'package:model_interfaces/model_interfaces.dart';
 
+import 'external_url.dart';
+
 class Project implements WithIdTitle<String> {
   @override
   final String id;
@@ -8,21 +10,23 @@ class Project implements WithIdTitle<String> {
   final String title;
 
   final String description;
-  final int year;
-  final String url;
+  final int? year;
+  final List<ExternalUrl> urls;
   final String imageUrl;
   final List<String> tags;
-  final DateTime dateTime;
+  final DateTime? dateTime;
+  final String body;
 
   Project({
     required this.id,
     required this.title,
     required this.description,
     required this.year,
-    required this.url,
+    required this.urls,
     required this.imageUrl,
     required this.tags,
     required this.dateTime,
+    required this.body,
   });
 
   // TODO: Safe parsing. Return null and print error.
@@ -32,10 +36,11 @@ class Project implements WithIdTitle<String> {
       title: map['title'],
       description: map['description'],
       year: map['year'],
-      url: map['url'],
+      urls: ExternalUrl.fromMaps(map['urls'] ?? []),
       imageUrl: map['imageUrl'],
       tags: map['tags'].cast<String>(),
-      dateTime: map['dateTime'].toDate(),
+      dateTime: map['dateTime']?.toDate(),
+      body: map['body'] ?? '',
     );
   }
 }

@@ -11,8 +11,8 @@ class ProjectsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MyScaffold(
-      body: ProjectListWidget(),
+    return MyScaffold(
+      body: ProjectListWidget(filter: bloc.filter),
     );
   }
 }

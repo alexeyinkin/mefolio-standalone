@@ -41,8 +41,12 @@ class ProjectQueryBuilder extends QueryBuilder<Project> {
   @override
   Query<Project> get query => _query;
 
+  final _keywordsOr = <String>[];
+
   ProjectQueryBuilder(this.filter) {
-    // TODO: Add filter conditions.
+    _addYear();
+    _addTagsToKeywords();
+    _addKeywords();
   }
 
   static Query<Project> _createEmptyQuery() {
@@ -50,5 +54,20 @@ class ProjectQueryBuilder extends QueryBuilder<Project> {
           fromFirestore: ProjectRepository.fromFirestoreStatic,
           toFirestore: (_, __) => throw UnimplementedError(),
         );
+  }
+
+  void _addYear() {
+    if (filter.year == null) return;
+    _query = _query.where('year', isEqualTo: filter.year);
+  }
+
+  void _addTagsToKeywords() {
+    if (filter.tagsOr == null) return;
+    _keywordsOr.addAll(filter.tagsOr!.map((tag) => 'tag_$tag'));
+  }
+
+  void _addKeywords() {
+    if (_keywordsOr.isEmpty) return;
+    _query = _query.where('keywords', arrayContainsAny: _keywordsOr);
   }
 }

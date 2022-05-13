@@ -1,5 +1,6 @@
 import 'package:app_state/app_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 
 import '../../theme/theme.dart';
 import '../../widgets/scaffold.dart';
@@ -15,9 +16,20 @@ class ProjectScreen
     if (project == null) return Container();
 
     return MyScaffold(
-      body: Text(
-        project.title,
-        style: AppStyle.itemHeader,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Text(
+              project.title,
+              style: AppStyle.itemHeader,
+            ),
+            const MySpacing(),
+            Markdown(
+              data: project.body,
+              shrinkWrap: true,
+            ),
+          ],
+        ),
       ),
     );
   }

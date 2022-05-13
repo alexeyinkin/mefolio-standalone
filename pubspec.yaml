@@ -6,17 +6,19 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 0.1.0
 
 environment:
-  sdk: ">=2.16.2 <3.0.0"
+  sdk: ">=2.17.0 <3.0.0"
+  flutter: ">=3.0.0"
 
 dependencies:
   cloud_firestore: ^3.1.13
+  flutter_markdown: ^0.6.10
   get_it: ^7.2.0
   google_fonts: ^2.3.2
   rxdart: ^0.27.3
   url_strategy: ^0.2.0
 
 # Our packages:
-  app_state: ^0.3.3
+  app_state: ^0.3.5
   keyed_collection_widgets: ^0.2.0
   model_interfaces: ^0.1.4
   model_fetch: ^0.2.0
@@ -39,7 +41,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^1.0.0
+  flutter_lints: ^2.0.1
 
 flutter:
   uses-material-design: true

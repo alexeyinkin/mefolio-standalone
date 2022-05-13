@@ -10,13 +10,17 @@ import '../theme/theme.dart';
 import 'project_card.dart';
 
 class ProjectListWidget extends StatelessWidget {
-  const ProjectListWidget({Key? key}) : super(key: key);
+  final ProjectFilter filter;
+
+  ProjectListWidget({
+    required this.filter,
+  }) : super(key: ValueKey(filter.hash));
 
   @override
   Widget build(BuildContext context) {
     final bloc = GetIt.instance
         .get<ProjectRepository>()
-        .frozenListBloc(const ProjectFilter());
+        .frozenListBloc(filter);
 
     return LazyLoadBuilder<Project>(
       bloc: bloc,
