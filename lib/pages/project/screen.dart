@@ -1,6 +1,7 @@
 import 'package:app_state/app_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../theme/theme.dart';
 import '../../widgets/scaffold.dart';
@@ -27,6 +28,10 @@ class ProjectScreen
             Markdown(
               data: project.body,
               shrinkWrap: true,
+              onTapLink: (text, url, title) {
+                if (url == null) return;
+                launchUrl(Uri.parse(url));
+              },
             ),
           ],
         ),
