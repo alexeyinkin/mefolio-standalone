@@ -11,9 +11,14 @@ class PageFactory {
     Map<String, dynamic> state,
   ) {
     switch (factoryKey) {
-      case ContactPage.factoryKey: return ContactPage();
-      case ProjectPage.factoryKey: return ProjectPage(id: state['id']);
-      case ProjectsPage.factoryKey: return ProjectsPage(filter: ProjectFilter()); // TODO: Denormalize state
+      case ContactPage.factoryKey:
+        return ContactPage();
+
+      case ProjectPage.factoryKey:
+        return ProjectPage(id: state['id']);
+
+      case ProjectsPage.factoryKey:
+        return ProjectsPage(filter: ProjectFilter.fromMap(state));
     }
 
     return null;

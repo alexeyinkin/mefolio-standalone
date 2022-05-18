@@ -253,7 +253,7 @@ packages:
       name: model_fetch_flutter
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.2.0"
+    version: "0.2.1"
   model_interfaces:
     dependency: "direct main"
     description:
@@ -475,7 +475,7 @@ packages:
       name: visibility_detector
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.2.2"
+    version: "0.3.3"
   win32:
     dependency: transitive
     description:

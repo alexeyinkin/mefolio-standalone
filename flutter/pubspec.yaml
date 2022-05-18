@@ -25,7 +25,7 @@ dependencies:
   model_interfaces: ^0.1.4
   model_fetch: ^0.2.0
   model_fetch_firestore: ^0.2.0
-  model_fetch_flutter: ^0.2.0
+  model_fetch_flutter: ^0.2.1
 
 #  app_state:
 #    path: '../../flutter-app-state'

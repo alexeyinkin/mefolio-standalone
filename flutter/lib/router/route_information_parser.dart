@@ -14,6 +14,7 @@ class MyRouteInformationParser extends PageStacksRouteInformationParser {
   PageConfiguration _parseTopPageConfiguration(RouteInformation ri) {
     return
         ProjectPageConfiguration.tryParse(ri) ??
+        ProjectsPageConfiguration.tryParse(ri) ??
 
         // The default page if nothing worked.
         ProjectsPageConfiguration(filter: const ProjectFilter());

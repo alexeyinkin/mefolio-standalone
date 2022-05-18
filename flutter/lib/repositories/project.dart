@@ -44,8 +44,8 @@ class ProjectQueryBuilder extends QueryBuilder<Project> {
   final _keywordsOr = <String>[];
 
   ProjectQueryBuilder(this.filter) {
+    _addTagsAnd();
     _addYear();
-    _addTagsToKeywords();
     _addKeywords();
   }
 
@@ -56,14 +56,15 @@ class ProjectQueryBuilder extends QueryBuilder<Project> {
         );
   }
 
+  void _addTagsAnd() {
+    for (final tag in filter.tagsAnd ?? []) {
+      _query = _query.where('tagsMap.$tag', isEqualTo: true);
+    }
+  }
+
   void _addYear() {
     if (filter.year == null) return;
     _query = _query.where('year', isEqualTo: filter.year);
-  }
-
-  void _addTagsToKeywords() {
-    if (filter.tagsOr == null) return;
-    _keywordsOr.addAll(filter.tagsOr!.map((tag) => 'tag_$tag'));
   }
 
   void _addKeywords() {

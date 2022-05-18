@@ -28,7 +28,7 @@ class TagWidget extends StatelessWidget {
   void _onTap() {
     pageStacksBloc.currentStackBloc?.push(
       ProjectsPage(
-        filter: ProjectFilter(tagsOr: [tag]),
+        filter: ProjectFilter(tagsAnd: [tag]),
       ),
     );
   }
