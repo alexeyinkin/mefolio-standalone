@@ -1,4 +1,4 @@
-import {StringMap} from "./StringMap";
+import {StringObject, StringBoolObject} from "./maps";
 import {Url} from "./Url";
 import {firestore} from "firebase-admin";
 import Timestamp = firestore.Timestamp;
@@ -10,18 +10,20 @@ export interface Project {
     imageUrl: string;
     keywords: string[];
     tags: string[];
+    tagsMap: Map<string, boolean>;
     title: string;
     urls: Url[];
     year: number | undefined;
 }
 
-export function fromMap(map: StringMap): Project {
+export function fromMap(map: StringObject): Project {
     const result = map as Project;
 
     result.dateTime = toDate(map['dateTime']);
-    result.urls = result.urls ?? [];
-    result.tags = result.tags ?? [];
     result.keywords = result.keywords ?? [];
+    result.tags = result.tags ?? [];
+    result.tagsMap = new Map<string, boolean>(Object.entries(map['tagsMap'] ?? {}));
+    result.urls = result.urls ?? [];
 
     return result;
 }
@@ -34,7 +36,7 @@ function toDate(value: any): Date | undefined {
     return undefined;
 }
 
-export function getKeywords(obj: Project): string[] {
+export function getProjectKeywords(obj: Project): string[] {
     const result: string[] = [];
 
     result.push(...getTagKeywords(obj.tags));
@@ -44,4 +46,14 @@ export function getKeywords(obj: Project): string[] {
 
 function getTagKeywords(tags: string[]): string[] {
     return tags.map(tag => `tag_${tag}`);
+}
+
+export function getProjectTagsMap(obj: Project): StringBoolObject {
+    const result = {} as StringBoolObject;
+
+    for (const tag of obj.tags) {
+        result[tag] = true;
+    }
+
+    return result;
 }

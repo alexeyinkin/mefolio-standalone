@@ -1,9 +1,9 @@
 import * as admin from "firebase-admin";
 import {firestore} from "firebase-admin";
 import Timestamp = firestore.Timestamp;
-import {StringMap} from "../interfaces/StringMap";
+import {StringObject} from "../interfaces/maps";
 
-export async function fixDate(map: StringMap, fieldName: string, documentPath: string): Promise<void> {
+export async function fixDate(map: StringObject, fieldName: string, documentPath: string): Promise<void> {
     const value = map[fieldName];
     if (typeof value === 'string') {
         const set = new Map<string, any>();

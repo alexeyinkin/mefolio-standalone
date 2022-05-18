@@ -1,8 +1,8 @@
 import * as admin from "firebase-admin";
 import * as functions from "firebase-functions";
 
-import {Project, fromMap, getKeywords} from "../interfaces/Project";
-import {StringMap} from "../interfaces/StringMap";
+import {Project, fromMap, getProjectKeywords, getProjectTagsMap} from "../interfaces/Project";
+import {StringObject} from "../interfaces/maps";
 import {fixDate} from "../util/util";
 
 const listenPath = "/projects/{id}";
@@ -37,13 +37,13 @@ async function updateDerivedFields(id: string, obj: Project | undefined): Promis
     }
 
     const set = {
-        titleExclamation: obj["title"] + "!",
-        keywords: getKeywords(obj),
+        keywords: getProjectKeywords(obj),
+        tagsMap: getProjectTagsMap(obj),
     };
 
     await docRef.update(set);
 }
 
-async function fixTypes(id: string, map: StringMap): Promise<void> {
+async function fixTypes(id: string, map: StringObject): Promise<void> {
     await fixDate(map, 'dateTime', `projects/${id}`);
 }
