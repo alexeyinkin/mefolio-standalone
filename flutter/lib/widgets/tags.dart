@@ -1,5 +1,8 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
+import 'my_padding.dart';
 import 'tag.dart';
 
 class TagsWidget extends StatelessWidget {
@@ -15,9 +18,14 @@ class TagsWidget extends StatelessWidget {
     if (tags.isEmpty) return Container();
 
     return Wrap(
-      spacing: 10,
+      crossAxisAlignment: WrapCrossAlignment.center,
       children: [
-        const Icon(Icons.tag, size: 16),
+        MyPadding(
+          child: Transform.rotate(
+            child: const Icon(Icons.discount, size: 16),
+            angle: math.pi / 2,
+          ),
+        ),
         ...tags.map((s) => TagWidget(tag: s)),
       ],
     );

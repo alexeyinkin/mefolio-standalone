@@ -4,7 +4,6 @@ import '../filters/project.dart';
 import '../main.dart';
 import '../pages/projects/page.dart';
 import '../theme/theme.dart';
-import '../widgets/clickable.dart';
 
 class TagWidget extends StatelessWidget {
   final String tag;
@@ -16,8 +15,14 @@ class TagWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClickableWidget(
-      onTap: _onTap,
+    return TextButton(
+      style: TextButton.styleFrom(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        minimumSize: const Size(20, 40),
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        alignment: Alignment.centerLeft,
+      ),
+      onPressed: _onTap,
       child: Text(
         tag,
         style: AppStyle.tag,
@@ -28,7 +33,7 @@ class TagWidget extends StatelessWidget {
   void _onTap() {
     pageStacksBloc.currentStackBloc?.push(
       ProjectsPage(
-        filter: ProjectFilter(tagsAnd: [tag]),
+        initialFilter: ProjectFilter(tagsAnd: [tag]),
       ),
     );
   }

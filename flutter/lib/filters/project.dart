@@ -4,6 +4,12 @@ class ProjectFilter extends AbstractFilter {
   final List<String>? tagsAnd;
   final int? year;
 
+  bool get isEmpty {
+    if (tagsAnd != null) return false;
+    if (year != null) return false;
+    return true;
+  }
+
   const ProjectFilter({
     this.tagsAnd,
     this.year,

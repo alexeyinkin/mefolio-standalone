@@ -1,18 +1,37 @@
+import 'package:app_state/app_state.dart';
 import 'package:flutter/material.dart';
 
+import '../../theme/theme.dart';
+import '../../widgets/my_padding.dart';
+import '../../widgets/project_filter_line.dart';
 import '../../widgets/project_list.dart';
 import '../../widgets/scaffold.dart';
 import 'bloc.dart';
 
-class ProjectsScreen extends StatelessWidget {
-  final ProjectsPageBloc bloc;
-
-  const ProjectsScreen({required this.bloc});
+class ProjectsScreen
+    extends StatefulBlocWidget<ProjectsPageBloc, ProjectsPageBlocState> {
+  ProjectsScreen({
+    required super.bloc,
+  });
 
   @override
-  Widget build(BuildContext context) {
+  Widget buildWithState(BuildContext context, ProjectsPageBlocState? state) {
+    if (state == null) return Container();
+
     return MyScaffold(
-      body: ProjectListWidget(filter: bloc.filter),
+      body: Column(
+        children: [
+          MyPadding(
+            child: ProjectFilterLineWidget(projectFilterBloc: bloc.filterBloc),
+          ),
+          const HorizontalBlackLine(),
+          Expanded(
+            child: MyPadding(
+              child: ProjectListWidget(filter: state.filterBlocState.filter),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

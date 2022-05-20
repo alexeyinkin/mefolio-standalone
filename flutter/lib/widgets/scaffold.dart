@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../theme/theme.dart';
-import '../widgets/my_padding.dart';
 
 class MyScaffold extends StatelessWidget {
   final Widget body;
@@ -21,11 +20,9 @@ class MyScaffold extends StatelessWidget {
               "Alexey Inkin",
               style: AppStyle.h1,
             ),
-            Container(height: 1, color: AppStyle.colorBlack),
+            const HorizontalBlackLine(),
             Expanded(
-              child: MyPadding(
-                child: body,
-              ),
+              child: body,
             ),
           ],
         ),

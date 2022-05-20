@@ -10,6 +10,12 @@ final themeData = ThemeData(
     secondary: _primaryColor,
   ),
   textTheme: GoogleFonts.firaSansExtraCondensedTextTheme(),
+  textButtonTheme: TextButtonThemeData(
+    style: TextButton.styleFrom(
+      primary: AppStyle.colorBlack,
+      textStyle: GoogleFonts.fredokaOne(),
+    ),
+  ),
 );
 
 abstract class AppStyle {
@@ -17,6 +23,7 @@ abstract class AppStyle {
   static const edgeInsets = EdgeInsets.all(padding);
   static const colorBlack = Color(0xFF000000);
   static const paleColor = Color(0x40000000);
+  static const activeTagColor = Color(0x40000000);
 
   static final h1 = GoogleFonts.firaSansExtraCondensed(
     textStyle: const TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
@@ -37,6 +44,15 @@ class MySpacing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SizedBox(width: 10, height: 10);
+  }
+}
+
+class HorizontalBlackLine extends StatelessWidget {
+  const HorizontalBlackLine({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(height: 1, color: AppStyle.colorBlack);
   }
 }
 

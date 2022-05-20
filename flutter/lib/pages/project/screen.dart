@@ -4,6 +4,7 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../theme/theme.dart';
+import '../../widgets/my_padding.dart';
 import '../../widgets/scaffold.dart';
 import 'bloc.dart';
 
@@ -17,23 +18,25 @@ class ProjectScreen
     if (project == null) return Container();
 
     return MyScaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Text(
-              project.title,
-              style: AppStyle.itemHeader,
-            ),
-            const MySpacing(),
-            Markdown(
-              data: project.body,
-              shrinkWrap: true,
-              onTapLink: (text, url, title) {
-                if (url == null) return;
-                launchUrl(Uri.parse(url));
-              },
-            ),
-          ],
+      body: MyPadding(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Text(
+                project.title,
+                style: AppStyle.itemHeader,
+              ),
+              const MySpacing(),
+              Markdown(
+                data: project.body,
+                shrinkWrap: true,
+                onTapLink: (text, url, title) {
+                  if (url == null) return;
+                  launchUrl(Uri.parse(url));
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

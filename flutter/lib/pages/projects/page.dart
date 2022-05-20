@@ -11,11 +11,12 @@ class ProjectsPage
   static const factoryKey = 'ProjectsPage';
 
   ProjectsPage({
-    required ProjectFilter filter,
+    required ProjectFilter initialFilter,
   }) : super(
-          key: ValueKey(formatKey(filter: filter)),
+          // TODO: Just unique keys since filter can now be replaced.
+          key: ValueKey(formatKey(filter: initialFilter)),
           factoryKey: factoryKey,
-          bloc: ProjectsPageBloc(filter: filter),
+          bloc: ProjectsPageBloc(initialFilter: initialFilter),
           createScreen: (b) => ProjectsScreen(bloc: b),
         );
 

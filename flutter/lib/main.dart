@@ -28,7 +28,7 @@ void main() async {
   pageStacksBloc.addPageStack(
     TabEnum.projects.name,
     PageStackBloc<PageConfiguration>(
-      bottomPage: ProjectsPage(filter: const ProjectFilter()),
+      bottomPage: ProjectsPage(initialFilter: const ProjectFilter()),
       createPage: PageFactory.createPage,
     ),
   );

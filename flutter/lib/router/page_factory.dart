@@ -18,7 +18,7 @@ class PageFactory {
         return ProjectPage(id: state['id']);
 
       case ProjectsPage.factoryKey:
-        return ProjectsPage(filter: ProjectFilter.fromMap(state));
+        return ProjectsPage(initialFilter: ProjectFilter.fromMap(state));
     }
 
     return null;
