@@ -4,6 +4,7 @@ import {firestore} from "firebase-admin";
 import Timestamp = firestore.Timestamp;
 
 export interface Project {
+    id: string;
     body: string | undefined;
     dateTime: Date | undefined;
     description: string;
@@ -16,9 +17,10 @@ export interface Project {
     year: number | undefined;
 }
 
-export function fromMap(map: StringObject): Project {
+export function fromIdAndMap(id: string, map: StringObject): Project {
     const result = map as Project;
 
+    result.id = id;
     result.dateTime = toDate(map['dateTime']);
     result.keywords = result.keywords ?? [];
     result.tags = result.tags ?? [];
