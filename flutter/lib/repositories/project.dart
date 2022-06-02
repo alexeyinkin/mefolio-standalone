@@ -9,7 +9,7 @@ class ProjectRepository
     extends AbstractFirestoreRepository<Project, ProjectFilter> {
   @override
   CollectionReference<Map<String, dynamic>> getCollection() {
-    return FirebaseFirestore.instance.collection('projects');
+    return FirebaseFirestore.instance.collection('Project');
   }
 
   @override
@@ -50,7 +50,7 @@ class ProjectQueryBuilder extends QueryBuilder<Project> {
   }
 
   static Query<Project> _createEmptyQuery() {
-    return FirebaseFirestore.instance.collection('projects').withConverter(
+    return FirebaseFirestore.instance.collection('Project').withConverter(
           fromFirestore: ProjectRepository.fromFirestoreStatic,
           toFirestore: (_, __) => throw UnimplementedError(),
         );

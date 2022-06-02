@@ -1,4 +1,4 @@
-import {StringObject} from "./maps";
+import {StringObject} from "../maps";
 import {DictionaryEntry, toSaveMap as entryToSaveMap} from "./DictionaryEntry";
 
 export interface Tag extends DictionaryEntry {

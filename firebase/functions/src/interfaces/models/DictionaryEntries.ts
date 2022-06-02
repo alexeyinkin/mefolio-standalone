@@ -1,7 +1,7 @@
 import {DictionaryEntry} from "./DictionaryEntry";
-import {StringObject} from "./maps";
-import {DictionaryEntryDenormalizer} from "./DictionaryEntryDenormalizer";
-import {DictionaryEntryNormalizer} from "./DictionaryEntryNormalizer";
+import {StringObject} from "../maps";
+import {DictionaryEntryDenormalizer} from "../DictionaryEntryDenormalizer";
+import {DictionaryEntryNormalizer} from "../DictionaryEntryNormalizer";
 
 export type DictionaryEntries<T extends DictionaryEntry> = {[key: string]: T};
 

@@ -1,12 +1,12 @@
 import * as admin from "firebase-admin";
 import * as functions from "firebase-functions";
 
-import {Project, fromIdAndMap, getProjectKeywords, getProjectTagsMap} from "../interfaces/Project";
-import {getById as getTagById, createById as createTagById} from "./tags";
+import {Project, fromIdAndMap, getProjectKeywords, getProjectTagsMap} from "../interfaces/models/Project";
+import {getById as getTagById, createById as createTagById} from "./Tag";
 import {StringObject} from "../interfaces/maps";
 import {fixDate} from "../util/util";
 
-const listenPath = "/projects/{id}";
+const listenPath = "/Project/{id}";
 
 export const projects_onCreate = functions.firestore.document(listenPath).onCreate(async (snapshot, context) => {
     const id = context.params.id;
@@ -29,7 +29,7 @@ export const projects_onUpdate = functions.firestore.document(listenPath).onUpda
 });
 
 async function updateDerivedFields(id: string, obj: Project | undefined): Promise<void> {
-    const docRef = admin.firestore().doc(`projects/${id}`);
+    const docRef = admin.firestore().doc(`Project/${id}`);
 
     if (obj === undefined) {
         const doc = await docRef.get();
@@ -50,7 +50,7 @@ async function updateDerivedFields(id: string, obj: Project | undefined): Promis
 }
 
 async function fixTypes(id: string, map: StringObject): Promise<void> {
-    await fixDate(map, 'dateTime', `projects/${id}`);
+    await fixDate(map, 'dateTime', `Project/${id}`);
 }
 
 async function createTagsIfNot(id: string, obj: Project): Promise<void> {
@@ -60,4 +60,15 @@ async function createTagsIfNot(id: string, obj: Project): Promise<void> {
 
         await createTagById(tag);
     }
+}
+
+export async function getAll(): Promise<Project[]> {
+    const querySnapshot = await admin.firestore().collection("Project").get();
+    const result = new Array<Project>();
+
+    for (const doc of querySnapshot.docs) {
+        result.push(fromIdAndMap(doc.id, doc.data()));
+    }
+
+    return result;
 }

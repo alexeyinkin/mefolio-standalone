@@ -1,4 +1,4 @@
-import {StringObject} from "./maps";
+import {StringObject} from "../maps";
 
 export interface DictionaryEntry {
     id: string;

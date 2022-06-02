@@ -1,8 +1,8 @@
 import {DictionaryEntry} from "./DictionaryEntry";
 import {DictionaryEntries, fromMap as entriesFromMap, toSaveMap as entriesToSaveMap} from "./DictionaryEntries";
-import {StringObject} from "./maps";
-import {DictionaryEntryDenormalizer} from "./DictionaryEntryDenormalizer";
-import {DictionaryEntryNormalizer} from "./DictionaryEntryNormalizer";
+import {StringObject} from "../maps";
+import {DictionaryEntryDenormalizer} from "../DictionaryEntryDenormalizer";
+import {DictionaryEntryNormalizer} from "../DictionaryEntryNormalizer";
 
 export interface Dictionary<T extends DictionaryEntry> {
     id: string;

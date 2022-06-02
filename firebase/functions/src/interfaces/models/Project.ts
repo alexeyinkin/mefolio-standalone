@@ -1,4 +1,5 @@
-import {StringObject, StringBoolObject} from "./maps";
+import {ProjectFilter, getEmpty as getEmptyFilter, and as filtersAnd} from "../filters/ProjectFilter";
+import {StringObject, StringBoolObject} from "../maps";
 import {Url} from "./Url";
 import {firestore} from "firebase-admin";
 import Timestamp = firestore.Timestamp;
@@ -55,6 +56,31 @@ export function getProjectTagsMap(obj: Project): StringBoolObject {
 
     for (const tag of obj.tags) {
         result[tag] = true;
+    }
+
+    return result;
+}
+
+export function getAllPossibleFilters(obj: Project): ProjectFilter[] {
+    const result = new Array<ProjectFilter>(getEmptyFilter());
+
+    for (const tag of obj.tags) {
+        const f = {
+            tagsAnd: [tag],
+            year: undefined,
+        };
+
+        result.push(...result.map<ProjectFilter>(oldF => filtersAnd(oldF, f)));
+    }
+
+    const year = obj.year;
+    if (year !== undefined) {
+        const f = {
+            tagsAnd: [],
+            year: year,
+        };
+
+        result.push(...result.map<ProjectFilter>(oldF => filtersAnd(oldF, f)));
     }
 
     return result;

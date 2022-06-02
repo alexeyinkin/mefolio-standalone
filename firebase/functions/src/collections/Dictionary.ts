@@ -1,7 +1,7 @@
 import * as admin from "firebase-admin";
 
-import {Dictionary, getEmpty, fromIdAndMap, toSaveMap} from "../interfaces/Dictionary";
-import {DictionaryEntry} from "../interfaces/DictionaryEntry";
+import {Dictionary, getEmpty, fromIdAndMap, toSaveMap} from "../interfaces/models/Dictionary";
+import {DictionaryEntry} from "../interfaces/models/DictionaryEntry";
 import {DictionaryEntryDenormalizer} from "../interfaces/DictionaryEntryDenormalizer";
 import {DictionaryEntryNormalizer} from "../interfaces/DictionaryEntryNormalizer";
 
@@ -39,5 +39,5 @@ async function save<T extends DictionaryEntry>(dictionary: Dictionary<T>, entryN
 }
 
 function getDocRef(id: string): DocumentReference<DocumentData> {
-    return admin.firestore().doc(`dictionaries/${id}`);
+    return admin.firestore().doc(`Dictionary/${id}`);
 }

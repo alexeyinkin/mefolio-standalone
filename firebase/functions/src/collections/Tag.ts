@@ -1,11 +1,11 @@
 import * as admin from "firebase-admin";
 import * as functions from "firebase-functions";
 
-import {Tag, fromIdAndMap, toSaveMap} from "../interfaces/Tag";
-import {deleteEntry, updateEntry} from "./dictionaries";
+import {Tag, fromIdAndMap, toSaveMap} from "../interfaces/models/Tag";
+import {deleteEntry, updateEntry} from "./Dictionary";
 
-const listenPath = "/tags/{id}";
-const dictionaryId = "tags";
+const listenPath = "/Tag/{id}";
+const dictionaryId = "Tag";
 
 export const tags_onCreate = functions.firestore.document(listenPath).onCreate(async (snapshot, context) => {
     const id = context.params.id;
@@ -30,7 +30,7 @@ export const tags_onDelete = functions.firestore.document(listenPath).onDelete(a
 });
 
 export async function getById(id: string): Promise<Tag | undefined> {
-    const doc = await admin.firestore().doc(`tags/${id}`).get();
+    const doc = await admin.firestore().doc(`Tag/${id}`).get();
     const map = doc.data();
 
     if (map === undefined) return undefined;
@@ -39,7 +39,7 @@ export async function getById(id: string): Promise<Tag | undefined> {
 }
 
 export async function createById(id: string): Promise<void> {
-    const docRef = await admin.firestore().doc(`tags/${id}`);
+    const docRef = await admin.firestore().doc(`Tag/${id}`);
     const map = {
         fixMe: true, // New docs require interference to manually set title.
     };
