@@ -22,13 +22,13 @@ class ProjectListWidget extends StatelessWidget {
         .get<ProjectRepository>()
         .frozenListBloc(filter);
 
-    return LazyLoadBuilder<Project>(
+    return CollectionBlocBuilder<Project>(
       bloc: bloc,
       builder: (context, state) => _buildWithState(bloc, state),
     );
   }
 
-  Widget _buildWithState(LazyLoadBloc bloc, LazyLoadState<Project> state) {
+  Widget _buildWithState(LazyLoadBloc bloc, CollectionState<Project> state) {
     if (state.items.isEmpty) {
       // TODO: Show "Nothing found. Expand your search".
       return _getTrailing(bloc);
@@ -43,6 +43,10 @@ class ProjectListWidget extends StatelessWidget {
 
         if (i == lastIndex) {
           // TODO: Show "No more" in the end.
+          if (state.status == LoadStatus.error) {
+            return const Text("Error"); // TODO: Retry button.
+          }
+
           return _getTrailing(bloc);
         }
 
@@ -67,11 +71,11 @@ class ProjectListWidget extends StatelessWidget {
 // TODO: Extract to model_fetch_flutter
 class LazyLoadTrailingWidget extends StatelessWidget {
   final LazyLoadBloc bloc;
-  final Widget Function(BuildContext context, LazyLoadState state)?
+  final Widget Function(BuildContext context, CollectionState state)?
       loadingBuilder;
-  final Widget Function(BuildContext context, LazyLoadState state)?
+  final Widget Function(BuildContext context, CollectionState state)?
       noMoreBuilder;
-  final Widget Function(BuildContext context, LazyLoadState state)?
+  final Widget Function(BuildContext context, CollectionState state)?
       errorBuilder;
 
   const LazyLoadTrailingWidget({
@@ -84,13 +88,13 @@ class LazyLoadTrailingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LazyLoadBuilder(
+    return CollectionBlocBuilder(
       bloc: bloc,
       builder: _buildWithState,
     );
   }
 
-  Widget _buildWithState(BuildContext context, LazyLoadState state) {
+  Widget _buildWithState(BuildContext context, CollectionState state) {
     switch (state.status) {
       case LoadStatus.error:
         return (errorBuilder ?? _defaultBuilder)(context, state);
@@ -106,7 +110,7 @@ class LazyLoadTrailingWidget extends StatelessWidget {
     }
   }
 
-  Widget _defaultBuilder(BuildContext context, LazyLoadState state) {
+  Widget _defaultBuilder(BuildContext context, CollectionState state) {
     return Container();
   }
 }

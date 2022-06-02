@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 
-import '../filters/project.dart';
-import '../main.dart';
-import '../pages/projects/page.dart';
 import '../theme/theme.dart';
 
 class TagWidget extends StatelessWidget {
   final String tag;
+  final VoidCallback onPressed;
 
   const TagWidget({
     Key? key,
     required this.tag,
+    required this.onPressed,
   }) : super(key: key);
 
   @override
@@ -22,18 +21,10 @@ class TagWidget extends StatelessWidget {
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
         alignment: Alignment.centerLeft,
       ),
-      onPressed: _onTap,
+      onPressed: onPressed,
       child: Text(
         tag,
         style: AppStyle.tag,
-      ),
-    );
-  }
-
-  void _onTap() {
-    pageStacksBloc.currentStackBloc?.push(
-      ProjectsPage(
-        initialFilter: ProjectFilter(tagsAnd: [tag]),
       ),
     );
   }

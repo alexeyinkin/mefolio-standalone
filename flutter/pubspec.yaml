@@ -23,18 +23,18 @@ dependencies:
   app_state: ^0.3.5
   keyed_collection_widgets: ^0.2.0
   model_interfaces: ^0.1.4
-  model_fetch: ^0.2.0
-  model_fetch_firestore: ^0.2.0
-  model_fetch_flutter: ^0.2.1
+  model_fetch: ^0.3.0
+  model_fetch_firestore: ^0.3.0
+  model_fetch_flutter: ^0.3.0
 
 #  app_state:
-#    path: '../../flutter-app-state'
+#    path: '../../../flutter-app-state'
 #  model_fetch:
-#    path: '../../dart-model-fetch/model_fetch'
+#    path: '../../../dart-model-fetch/model_fetch'
 #  model_fetch_firestore:
-#    path: '../../dart-model-fetch/model_fetch_firestore'
+#    path: '../../../dart-model-fetch/model_fetch_firestore'
 #  model_fetch_flutter:
-#    path: '../../dart-model-fetch/model_fetch_flutter'
+#    path: '../../../dart-model-fetch/model_fetch_flutter'
 
   flutter:
     sdk: flutter

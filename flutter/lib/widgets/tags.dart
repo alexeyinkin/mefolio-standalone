@@ -6,11 +6,13 @@ import 'my_padding.dart';
 import 'tag.dart';
 
 class TagsWidget extends StatelessWidget {
-  final List<String> tags;
+  final Iterable<String> tags;
+  final ValueChanged<String> onPressed;
 
   const TagsWidget({
     Key? key,
     required this.tags,
+    required this.onPressed,
   }) : super(key: key);
 
   @override
@@ -22,11 +24,11 @@ class TagsWidget extends StatelessWidget {
       children: [
         MyPadding(
           child: Transform.rotate(
-            child: const Icon(Icons.discount, size: 16),
             angle: math.pi / 2,
+            child: const Icon(Icons.discount, size: 16),
           ),
         ),
-        ...tags.map((s) => TagWidget(tag: s)),
+        ...tags.map((s) => TagWidget(tag: s, onPressed: () => onPressed(s))),
       ],
     );
   }

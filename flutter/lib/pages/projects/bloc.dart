@@ -16,7 +16,13 @@ class ProjectsPageBloc
           initialFilter: initialFilter,
         ) {
     emitState();
-    // TODO: Listen to filterBloc
+    filterBloc.states.listen(_onFilterChange);
+  }
+
+  void _onFilterChange(ProjectFilterBlocState state) {
+    _filterBlocState = state;
+    emitState();
+    emitConfigurationChanged();
   }
 
   @override

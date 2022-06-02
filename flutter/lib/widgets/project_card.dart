@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../filters/project.dart';
 import '../main.dart';
 import '../models/project.dart';
 import '../pages/project/page.dart';
+import '../pages/projects/page.dart';
 import '../theme/theme.dart';
 import 'clickable.dart';
 import 'tags.dart';
@@ -101,7 +103,18 @@ class ProjectCard extends StatelessWidget {
   Widget _getTagsWidget() {
     return Container(
       alignment: Alignment.centerRight,
-      child: TagsWidget(tags: project.tags),
+      child: TagsWidget(
+        tags: project.tags,
+        onPressed: _onTagPressed,
+      ),
+    );
+  }
+
+  void _onTagPressed(String tag) {
+    pageStacksBloc.currentStackBloc?.push(
+      ProjectsPage(
+        initialFilter: ProjectFilter(tagsAnd: [tag]),
+      ),
     );
   }
 
