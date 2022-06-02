@@ -8,22 +8,26 @@ import {fixDate} from "../util/util";
 
 const listenPath = "/Project/{id}";
 
-export const projects_onCreate = functions.firestore.document(listenPath).onCreate(async (snapshot, context) => {
+export const Project_onCreate = functions.firestore.document(listenPath).onCreate(async (snapshot, context) => {
     const id = context.params.id;
     const map = snapshot.data();
-    const obj = fromIdAndMap(id, map);
 
     await fixTypes(id, map);
+
+    const obj = fromIdAndMap(id, map);
+
     await updateDerivedFields(id, obj);
     await createTagsIfNot(id, obj);
 });
 
-export const projects_onUpdate = functions.firestore.document(listenPath).onUpdate(async (change, context) => {
+export const Project_onUpdate = functions.firestore.document(listenPath).onUpdate(async (change, context) => {
     const id = context.params.id;
     const map = change.after.data();
-    const obj = fromIdAndMap(id, map);
 
     await fixTypes(id, map);
+
+    const obj = fromIdAndMap(id, map);
+
     await updateDerivedFields(id, obj);
     await createTagsIfNot(id, obj);
 });

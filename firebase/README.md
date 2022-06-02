@@ -35,7 +35,7 @@ sudo apt-get update && sudo apt-get install google-cloud-cli
 ## Import JSON ##
 
 ```bash
-firestore-import --accountCredentials credentials.json --backupFile icpc-3.json --nodePath conditions
+firestore-import --accountCredentials credentials.json --backupFile Project.json --nodePath Project
 ```
 
 where `credentials.json` is a file you export from Firebase console as per this tutorial: https://www.youtube.com/watch?v=gPzs6t3tQak

@@ -36,7 +36,7 @@ function conflictAndYear(a: ProjectFilter, b: ProjectFilter): boolean {
 export function getId(filter: ProjectFilter): string {
     const parts = new Array<string>();
 
-    parts.push(...filter.tagsAnd.map(tag => `t${tag}`));
+    parts.push(...[...filter.tagsAnd].sort().map(tag => `t${tag}`));
 
     const year = filter.year;
     if (year !== undefined) {

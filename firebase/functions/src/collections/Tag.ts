@@ -7,7 +7,7 @@ import {deleteEntry, updateEntry} from "./Dictionary";
 const listenPath = "/Tag/{id}";
 const dictionaryId = "Tag";
 
-export const tags_onCreate = functions.firestore.document(listenPath).onCreate(async (snapshot, context) => {
+export const Tag_onCreate = functions.firestore.document(listenPath).onCreate(async (snapshot, context) => {
     const id = context.params.id;
     const map = snapshot.data();
     const obj = fromIdAndMap(id, map);
@@ -15,7 +15,7 @@ export const tags_onCreate = functions.firestore.document(listenPath).onCreate(a
     await updateEntry(dictionaryId, fromIdAndMap, toSaveMap, obj);
 });
 
-export const tags_onUpdate = functions.firestore.document(listenPath).onUpdate(async (change, context) => {
+export const Tag_onUpdate = functions.firestore.document(listenPath).onUpdate(async (change, context) => {
     const id = context.params.id;
     const map = change.after.data();
     const obj = fromIdAndMap(id, map);
@@ -23,7 +23,7 @@ export const tags_onUpdate = functions.firestore.document(listenPath).onUpdate(a
     await updateEntry(dictionaryId, fromIdAndMap, toSaveMap, obj);
 });
 
-export const tags_onDelete = functions.firestore.document(listenPath).onDelete(async (snapshot, context) => {
+export const Tag_onDelete = functions.firestore.document(listenPath).onDelete(async (snapshot, context) => {
     const id = context.params.id;
 
     await deleteEntry(dictionaryId, fromIdAndMap, toSaveMap, id);
