@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:model_fetch/model_fetch.dart';
 
 import '../blocs/project_filter.dart';
-import '../blocs/tag_dictionary.dart';
 import '../theme/theme.dart';
 import '../util/util.dart';
 import 'tag.dart';
@@ -85,13 +83,19 @@ class ProjectFilterLineWidget extends StatelessWidget {
   }
 
   List<Widget> _getAddableTagWidgets(ProjectFilterBlocState state) {
-    final bloc = GetIt.instance.get<TagDictionaryBloc>();
-    final tags = bloc.createState().items;
+    final stat = state.statState.model;
+    if (stat == null) return [];
 
-    return tags.map<Widget>((obj) => TagWidget(
-      tag: obj.title,
-      onPressed: () => projectFilterBloc.andTag(obj.title),
-    )).toList(growable: false);
+    return stat.tagsAnd.entries
+        .where((entry) => entry.value.count < stat.count)
+        .map<Widget>(
+          (entry) => TagWidget(
+            tag: entry.key,
+            count: entry.value.count,
+            onPressed: () => projectFilterBloc.andTag(entry.key),
+          ),
+        )
+        .toList(growable: false);
   }
 
   void _onFilterPressed() {}

@@ -25,6 +25,10 @@ abstract class AppStyle {
   static const paleColor = Color(0x40000000);
   static const activeTagColor = Color(0x40000000);
 
+  static final normal = GoogleFonts.firaSansExtraCondensed(
+    textStyle: const TextStyle(),
+  );
+
   static final h1 = GoogleFonts.firaSansExtraCondensed(
     textStyle: const TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
   );

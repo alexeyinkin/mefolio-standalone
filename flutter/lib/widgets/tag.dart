@@ -4,11 +4,13 @@ import '../theme/theme.dart';
 
 class TagWidget extends StatelessWidget {
   final String tag;
+  final int? count;
   final VoidCallback onPressed;
 
   const TagWidget({
     Key? key,
     required this.tag,
+    this.count,
     required this.onPressed,
   }) : super(key: key);
 
@@ -22,9 +24,18 @@ class TagWidget extends StatelessWidget {
         alignment: Alignment.centerLeft,
       ),
       onPressed: onPressed,
-      child: Text(
-        tag,
-        style: AppStyle.tag,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(tag, style: AppStyle.tag),
+          if (count != null) Padding(
+            padding: const EdgeInsets.only(left: 5),
+            child: Opacity(
+              opacity: .3,
+              child: Text('$count', style: AppStyle.normal),
+            ),
+          ),
+        ],
       ),
     );
   }
