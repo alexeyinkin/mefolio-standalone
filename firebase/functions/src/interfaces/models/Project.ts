@@ -13,6 +13,7 @@ export interface Project {
     description: string;
     imageUrl: string;
     keywords: string[];
+    role: string | undefined;
     tags: string[];
     tagsMap: Map<string, boolean>;
     title: string;

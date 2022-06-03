@@ -13,6 +13,7 @@ class Project implements WithIdTitle<String> {
   final int? year;
   final List<ExternalUrl> urls;
   final String imageUrl;
+  final String? role;
   final List<String> tags;
   final DateTime? dateTimeEnd;
   final DateTime? dateTimeRelease;
@@ -26,6 +27,7 @@ class Project implements WithIdTitle<String> {
     required this.year,
     required this.urls,
     required this.imageUrl,
+    required this.role,
     required this.tags,
     required this.dateTimeEnd,
     required this.dateTimeRelease,
@@ -42,6 +44,7 @@ class Project implements WithIdTitle<String> {
       year: map['year'],
       urls: ExternalUrl.fromMaps(map['urls'] ?? []),
       imageUrl: map['imageUrl'],
+      role: map['role'],
       tags: map['tags'].cast<String>(),
       dateTimeEnd: map['dateTimeEnd']?.toDate(),
       dateTimeRelease: map['dateTimeRelease']?.toDate(),

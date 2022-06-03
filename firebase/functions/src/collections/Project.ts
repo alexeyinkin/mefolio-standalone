@@ -2,7 +2,8 @@ import * as admin from "firebase-admin";
 import * as functions from "firebase-functions";
 
 import {Project, fromIdAndMap, getProjectKeywords, getProjectTagsMap} from "../interfaces/models/Project";
-import {getById as getTagById, createById as createTagById} from "./Tag";
+import {getRoleById, createRoleById} from "./Role";
+import {getTagById, createTagById} from "./Tag";
 import {StringObject} from "../interfaces/maps";
 import {fixDate} from "../util/util";
 
@@ -17,6 +18,7 @@ export const Project_onCreate = functions.firestore.document(listenPath).onCreat
     const obj = fromIdAndMap(id, map);
 
     await updateDerivedFields(id, obj);
+    await createRoleIfNot(id, obj);
     await createTagsIfNot(id, obj);
 });
 
@@ -29,6 +31,7 @@ export const Project_onUpdate = functions.firestore.document(listenPath).onUpdat
     const obj = fromIdAndMap(id, map);
 
     await updateDerivedFields(id, obj);
+    await createRoleIfNot(id, obj);
     await createTagsIfNot(id, obj);
 });
 
@@ -57,6 +60,16 @@ async function fixTypes(id: string, map: StringObject): Promise<void> {
     await fixDate(map, 'dateTimeEnd', `Project/${id}`);
     await fixDate(map, 'dateTimeRelease', `Project/${id}`);
     await fixDate(map, 'dateTimeStart', `Project/${id}`);
+}
+
+async function createRoleIfNot(id: string, obj: Project): Promise<void> {
+    const role = obj.role;
+    if (role === undefined) return;
+
+    const roleObj = await getRoleById(role);
+    if (roleObj !== undefined) return;
+
+    await createRoleById(role);
 }
 
 async function createTagsIfNot(id: string, obj: Project): Promise<void> {

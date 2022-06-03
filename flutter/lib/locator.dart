@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 
+import 'blocs/role_dictionary.dart';
 import 'blocs/tag_dictionary.dart';
 import 'repositories/project.dart';
 import 'repositories/project_filter_stat.dart';
@@ -18,6 +19,7 @@ void _initializeRepositories() {
 
 void _initializeDictionaries() {
   GetIt.instance
+    ..registerSingleton<RoleDictionaryBloc>(RoleDictionaryBloc())
     ..registerSingleton<TagDictionaryBloc>(TagDictionaryBloc())
   ;
 }
