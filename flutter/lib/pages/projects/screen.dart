@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../theme/theme.dart';
 import '../../widgets/my_padding.dart';
 import '../../widgets/project_filter_line.dart';
-import '../../widgets/project_list.dart';
+import '../../widgets/project_grid.dart';
 import '../../widgets/scaffold.dart';
 import 'bloc.dart';
 
@@ -26,9 +26,7 @@ class ProjectsScreen
           ),
           const HorizontalBlackLine(),
           Expanded(
-            child: MyPadding(
-              child: ProjectListWidget(filter: state.filterBlocState.filter),
-            ),
+            child: ProjectGridWidget(filter: state.filterBlocState.filter),
           ),
         ],
       ),
