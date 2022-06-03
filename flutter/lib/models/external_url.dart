@@ -2,7 +2,7 @@ class ExternalUrl {
   final Uri uri;
   final String? title;
 
-  ExternalUrl({
+  const ExternalUrl({
     required this.uri,
     required this.title,
   });

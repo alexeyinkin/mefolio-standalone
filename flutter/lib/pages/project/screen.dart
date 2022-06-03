@@ -6,6 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../theme/theme.dart';
 import '../../widgets/my_padding.dart';
 import '../../widgets/scaffold.dart';
+import '../../widgets/urls.dart';
 import 'bloc.dart';
 
 class ProjectScreen
@@ -27,6 +28,7 @@ class ProjectScreen
                 style: AppStyle.itemHeader,
               ),
               const MySpacing(),
+              UrlsWidget(urls: project.urls),
               Markdown(
                 data: project.body,
                 shrinkWrap: true,

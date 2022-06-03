@@ -40,6 +40,13 @@ abstract class AppStyle {
   static final tag = GoogleFonts.firaSansExtraCondensed(
     textStyle: const TextStyle(fontWeight: FontWeight.bold),
   );
+
+  static final narrowBorderTextButton = TextButton.styleFrom(
+    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+    minimumSize: const Size(20, 30),
+    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+    alignment: Alignment.centerLeft,
+  );
 }
 
 class MySpacing extends StatelessWidget {

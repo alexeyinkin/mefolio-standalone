@@ -55,6 +55,7 @@ class ProjectFilterLineWidget extends StatelessWidget {
       case LoadStatus.error:
         return const Text("None Found");
 
+      case LoadStatus.notTried:
       case LoadStatus.loading:
         return const Text("Loading...");
 
