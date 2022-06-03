@@ -5,6 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../theme/theme.dart';
 import '../../widgets/my_padding.dart';
+import '../../widgets/project_date.dart';
 import '../../widgets/scaffold.dart';
 import '../../widgets/urls.dart';
 import 'bloc.dart';
@@ -37,6 +38,9 @@ class ProjectScreen
                   launchUrl(Uri.parse(url));
                 },
               ),
+              HorizontalLineSeparator(),
+              const MySpacing(),
+              ProjectDateWidget(project: project),
             ],
           ),
         ),

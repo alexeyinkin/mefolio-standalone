@@ -7,7 +7,9 @@ import Timestamp = firestore.Timestamp;
 export interface Project {
     id: string;
     body: string | undefined;
-    dateTime: Date | undefined;
+    dateTimeEnd: Date | undefined;
+    dateTimeRelease: Date | undefined;
+    dateTimeStart: Date | undefined;
     description: string;
     imageUrl: string;
     keywords: string[];
@@ -22,7 +24,9 @@ export function fromIdAndMap(id: string, map: StringObject): Project {
     const result = map as Project;
 
     result.id = id;
-    result.dateTime = toDate(map['dateTime']);
+    result.dateTimeEnd = toDateOrUndefined(map['dateTimeEnd']);
+    result.dateTimeRelease = toDateOrUndefined(map['dateTimeRelease']);
+    result.dateTimeStart = toDateOrUndefined(map['dateTimeStart']);
     result.keywords = result.keywords ?? [];
     result.tags = result.tags ?? [];
     result.tagsMap = new Map<string, boolean>(Object.entries(map['tagsMap'] ?? {}));
@@ -31,7 +35,7 @@ export function fromIdAndMap(id: string, map: StringObject): Project {
     return result;
 }
 
-function toDate(value: any): Date | undefined {
+function toDateOrUndefined(value: any): Date | undefined {
     if (value instanceof Date) return value;
     if (value instanceof Timestamp) return value.toDate();
     if (typeof value === 'string') return new Date(value);

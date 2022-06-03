@@ -6,3 +6,9 @@ extension AlternateWith<T> on Iterable<T> {
     }).skip(1).toList(growable: false);
   }
 }
+
+String formatDate(DateTime dateTime) {
+  // TODO: Localization.
+  final month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][dateTime.month - 1];
+  return "$month ${dateTime.day}, ${dateTime.year}";
+}

@@ -13,18 +13,29 @@ class MyScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            Text(
-              "Alexey Inkin",
-              style: AppStyle.h1,
+      body: Container(
+        color: AppStyle.colorBlack,
+        child: SafeArea(
+          child: Container(
+            color: AppStyle.colorWhite,
+            child: Column(
+              children: [
+                Container(
+                  color: AppStyle.colorBlack,
+                  width: double.infinity,
+                  alignment: Alignment.center,
+                  child: Text(
+                    "Alexey Inkin",
+                    style: AppStyle.h1,
+                  ),
+                ),
+                const HorizontalBlackLine(),
+                Expanded(
+                  child: body,
+                ),
+              ],
             ),
-            const HorizontalBlackLine(),
-            Expanded(
-              child: body,
-            ),
-          ],
+          ),
         ),
       ),
     );

@@ -14,7 +14,9 @@ class Project implements WithIdTitle<String> {
   final List<ExternalUrl> urls;
   final String imageUrl;
   final List<String> tags;
-  final DateTime? dateTime;
+  final DateTime? dateTimeEnd;
+  final DateTime? dateTimeRelease;
+  final DateTime? dateTimeStart;
   final String body;
 
   Project({
@@ -25,7 +27,9 @@ class Project implements WithIdTitle<String> {
     required this.urls,
     required this.imageUrl,
     required this.tags,
-    required this.dateTime,
+    required this.dateTimeEnd,
+    required this.dateTimeRelease,
+    required this.dateTimeStart,
     required this.body,
   });
 
@@ -39,7 +43,9 @@ class Project implements WithIdTitle<String> {
       urls: ExternalUrl.fromMaps(map['urls'] ?? []),
       imageUrl: map['imageUrl'],
       tags: map['tags'].cast<String>(),
-      dateTime: map['dateTime']?.toDate(),
+      dateTimeEnd: map['dateTimeEnd']?.toDate(),
+      dateTimeRelease: map['dateTimeRelease']?.toDate(),
+      dateTimeStart: map['dateTimeStart']?.toDate(),
       body: map['body'] ?? '',
     );
   }

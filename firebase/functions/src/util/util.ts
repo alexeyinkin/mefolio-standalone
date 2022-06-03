@@ -5,6 +5,7 @@ import {StringObject} from "../interfaces/maps";
 
 export async function fixDate(map: StringObject, fieldName: string, documentPath: string): Promise<void> {
     const value = map[fieldName];
+
     if (typeof value === 'string') {
         const set = new Map<string, any>();
 

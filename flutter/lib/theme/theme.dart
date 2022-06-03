@@ -22,6 +22,7 @@ abstract class AppStyle {
   static const padding = 10.0;
   static const edgeInsets = EdgeInsets.all(padding);
   static const colorBlack = Color(0xFF000000);
+  static const colorWhite = Color(0xFFFFFFFF);
   static const paleColor = Color(0x40000000);
   static const activeTagColor = Color(0x40000000);
 
@@ -30,7 +31,7 @@ abstract class AppStyle {
   );
 
   static final h1 = GoogleFonts.firaSansExtraCondensed(
-    textStyle: const TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+    textStyle: const TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: colorWhite),
   );
 
   static final itemHeader = GoogleFonts.firaSansExtraCondensed(

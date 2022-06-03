@@ -54,7 +54,9 @@ async function updateDerivedFields(id: string, obj: Project | undefined): Promis
 }
 
 async function fixTypes(id: string, map: StringObject): Promise<void> {
-    await fixDate(map, 'dateTime', `Project/${id}`);
+    await fixDate(map, 'dateTimeEnd', `Project/${id}`);
+    await fixDate(map, 'dateTimeRelease', `Project/${id}`);
+    await fixDate(map, 'dateTimeStart', `Project/${id}`);
 }
 
 async function createTagsIfNot(id: string, obj: Project): Promise<void> {
