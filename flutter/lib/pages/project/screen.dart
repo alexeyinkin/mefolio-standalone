@@ -38,6 +38,9 @@ class ProjectScreen
                   if (url == null) return;
                   launchUrl(Uri.parse(url));
                 },
+                styleSheet: MarkdownStyleSheet(
+                  a: const TextStyle(color: AppStyle.primaryColor),
+                ),
               ),
               const MySpacing(),
               NewPageTagsWidget(tags: project.tags),
