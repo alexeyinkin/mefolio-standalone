@@ -14,6 +14,13 @@ class ContactPageConfiguration extends PageConfiguration {
     return const RouteInformation(location: _location);
   }
 
+  static ContactPageConfiguration? tryParse(RouteInformation ri) {
+    final uri = Uri.parse(ri.location ?? '');
+    if (uri.path != _location) return null;
+
+    return const ContactPageConfiguration();
+  }
+
   @override
   String get defaultStackKey => TabEnum.contact.name;
 }
