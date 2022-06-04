@@ -14,6 +14,7 @@ dependencies:
   cloud_firestore: ^3.1.13
   collection: ^1.16.0
   flutter_markdown: ^0.6.10
+  flutter_svg: ^1.1.0
   get_it: ^7.2.0
   google_fonts: ^2.3.2
   rxdart: ^0.27.3
@@ -48,4 +49,8 @@ dev_dependencies:
   flutter_lints: ^2.0.1
 
 flutter:
+  assets:
+    - assets/contact/instagram.svg
+    - assets/contact/vk.svg
+
   uses-material-design: true
