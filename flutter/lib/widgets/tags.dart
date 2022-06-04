@@ -2,6 +2,9 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
+import '../filters/project.dart';
+import '../main.dart';
+import '../pages/projects/page.dart';
 import 'my_padding.dart';
 import 'tag.dart';
 
@@ -30,6 +33,27 @@ class TagsWidget extends StatelessWidget {
         ),
         ...tags.map((s) => TagWidget(tag: s, onPressed: () => onPressed(s))),
       ],
+    );
+  }
+}
+
+class NewPageTagsWidget extends StatelessWidget {
+  final Iterable<String> tags;
+  const NewPageTagsWidget({required this.tags,});
+
+  @override
+  Widget build(BuildContext context) {
+    return TagsWidget(
+      tags: tags,
+      onPressed: _onTagPressed,
+    );
+  }
+
+  void _onTagPressed(String tag) {
+    pageStacksBloc.currentStackBloc?.push(
+      ProjectsPage(
+        initialFilter: ProjectFilter(tagsAnd: [tag]),
+      ),
     );
   }
 }

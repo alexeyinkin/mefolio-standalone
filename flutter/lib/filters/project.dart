@@ -60,7 +60,7 @@ class ProjectFilter extends AbstractFilter {
     if (tagsAnd == null) return this;
 
     final newTagsAnd = tagsAnd!.where((t) => t != tag).toList(growable: false);
-    return withTagsAnd(newTagsAnd);
+    return withTagsAnd(newTagsAnd.isEmpty ? null : newTagsAnd);
   }
 
   ProjectFilter andTag(String tag) {

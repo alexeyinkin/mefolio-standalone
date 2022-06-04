@@ -7,6 +7,7 @@ import '../../theme/theme.dart';
 import '../../widgets/my_padding.dart';
 import '../../widgets/project_date.dart';
 import '../../widgets/scaffold.dart';
+import '../../widgets/tags.dart';
 import '../../widgets/urls.dart';
 import 'bloc.dart';
 
@@ -38,6 +39,8 @@ class ProjectScreen
                   launchUrl(Uri.parse(url));
                 },
               ),
+              const MySpacing(),
+              NewPageTagsWidget(tags: project.tags),
               HorizontalLineSeparator(),
               const MySpacing(),
               ProjectDateWidget(project: project),
