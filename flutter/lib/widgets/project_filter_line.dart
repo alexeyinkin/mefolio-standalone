@@ -39,12 +39,13 @@ class ProjectFilterLineWidget extends StatelessWidget {
             ),
           ),
         ),
-        IconButton(
-          padding: EdgeInsets.zero,
-          constraints: BoxConstraints(),
-          icon: Icon(Icons.filter_alt),
-          onPressed: _onFilterPressed,
-        ),
+        // TODO: Add filter dialog and button.
+        // IconButton(
+        //   padding: EdgeInsets.zero,
+        //   constraints: BoxConstraints(),
+        //   icon: Icon(Icons.filter_alt),
+        //   onPressed: _onFilterPressed,
+        // ),
       ],
     );
   }

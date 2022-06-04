@@ -15,7 +15,7 @@ class Project implements WithIdTitle<String> {
   final DateTime? dateTimeRelease;
   final DateTime? dateTimeStart;
   final String description;
-  final String imageUrl;
+  final String? imageUrl;
   final String? role;
   final List<String> tags;
   final List<ExternalUrl> urls;

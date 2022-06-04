@@ -41,9 +41,9 @@ class ProjectCard extends StatelessWidget {
     return Column(
       children: [
         // TODO: Contain in (width x 300). If shorter, go shorter.
-        SizedBox(
+        if (project.imageUrl != null) SizedBox(
           height: 300,
-          child: Image.network(project.imageUrl, fit: BoxFit.contain),
+          child: Image.network(project.imageUrl!, fit: BoxFit.contain),
         ),
         const MySpacing(),
         _getTitleWidget(context),
@@ -61,10 +61,10 @@ class ProjectCard extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
+            if (project.imageUrl != null) SizedBox(
               width: 300,
               height: 150,
-              child: Image.network(project.imageUrl),
+              child: Image.network(project.imageUrl!),
             ),
             const MySpacing(),
             Expanded(

@@ -20,7 +20,7 @@ class ProjectGridCard extends StatelessWidget {
       child: Stack(
         children: [
           _background(),
-          _image(),
+          if (project.imageUrl != null) _image(),
           _text(),
         ],
       ),
@@ -40,7 +40,7 @@ class ProjectGridCard extends StatelessWidget {
       top: 20,
       left: 20,
       right: 20,
-      child: Image.network(project.imageUrl, fit: BoxFit.contain),
+      child: Image.network(project.imageUrl!, fit: BoxFit.contain),
     );
   }
 
