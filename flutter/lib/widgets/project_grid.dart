@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/widgets.dart';
 import 'package:get_it/get_it.dart';
 import 'package:model_fetch/model_fetch.dart';
@@ -33,13 +35,20 @@ class ProjectGridWidget extends StatelessWidget {
       return _getTrailing(bloc);
     }
 
+    return LayoutBuilder(
+      builder: (context, constraints) => _buildWithStateAndConstraints(bloc, state, constraints),
+    );
+  }
+
+  Widget _buildWithStateAndConstraints(LazyLoadBloc bloc, CollectionState<Project> state, BoxConstraints constraints) {
+    final crossAxisCount = max(constraints.maxWidth ~/ 300, 1);
     final count = state.hasMore ? state.items.length + 1 : state.items.length;
 
     return GridView.builder(
       itemCount: count,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         childAspectRatio: 1,
-        crossAxisCount: 2,
+        crossAxisCount: crossAxisCount,
       ),
       itemBuilder: (context, i) {
         if (i == state.items.length) {
