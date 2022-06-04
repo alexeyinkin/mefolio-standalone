@@ -1,7 +1,9 @@
 import 'package:get_it/get_it.dart';
 
+import 'blocs/global.dart';
 import 'blocs/role_dictionary.dart';
 import 'blocs/tag_dictionary.dart';
+import 'repositories/global.dart';
 import 'repositories/project.dart';
 import 'repositories/project_filter_stat.dart';
 
@@ -12,6 +14,7 @@ Future<void> initializeServiceLocator() async {
 
 void _initializeRepositories() {
   GetIt.instance
+    ..registerSingleton<GlobalRepository>(GlobalRepository())
     ..registerSingleton<ProjectRepository>(ProjectRepository())
     ..registerSingleton<ProjectFilterStatRepository>(ProjectFilterStatRepository())
   ;
@@ -19,6 +22,7 @@ void _initializeRepositories() {
 
 void _initializeDictionaries() {
   GetIt.instance
+    ..registerSingleton<GlobalBloc>(GlobalBloc())
     ..registerSingleton<RoleDictionaryBloc>(RoleDictionaryBloc())
     ..registerSingleton<TagDictionaryBloc>(TagDictionaryBloc())
   ;

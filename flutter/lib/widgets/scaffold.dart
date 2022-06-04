@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../theme/theme.dart';
+import 'title.dart';
 
 class MyScaffold extends StatelessWidget {
   final Widget body;
@@ -24,10 +25,7 @@ class MyScaffold extends StatelessWidget {
                   color: AppStyle.colorBlack,
                   width: double.infinity,
                   alignment: Alignment.center,
-                  child: Text(
-                    "Alexey Inkin",
-                    style: AppStyle.h1,
-                  ),
+                  child: const TitleWidget(),
                 ),
                 const HorizontalBlackLine(),
                 Expanded(
