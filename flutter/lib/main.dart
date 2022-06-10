@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:url_strategy/url_strategy.dart';
 
 import 'filters/project.dart';
-import 'firebase_options.dart'; // Generated with CLI installation, https://firebase.flutter.dev/docs/cli
+import 'firebase_options.dart'; // Generated with CLI installation, https://firebase.google.com/docs/flutter/setup
 import 'locator.dart';
 import 'pages/contact/page.dart';
 import 'pages/home/screen.dart';
