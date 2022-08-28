@@ -1,32 +1,30 @@
 import 'package:app_state/app_state.dart';
 import 'package:flutter/widgets.dart';
 
-import 'page.dart';
 import '../../filters/project.dart';
 import '../../router/tab_enum.dart';
+import 'page.dart';
 
-class ProjectsPageConfiguration extends PageConfiguration {
+class ProjectsPath extends PagePath {
   static const _location = '/projects';
 
   final ProjectFilter filter;
 
-  ProjectsPageConfiguration({
+  ProjectsPath({
     required this.filter,
   }) : super(
     key: ProjectsPage.formatKey(filter: filter),
-    factoryKey: ProjectsPage.factoryKey,
+    factoryKey: ProjectsPage.classFactoryKey,
   );
 
   @override
-  RouteInformation restoreRouteInformation() {
+  String get location {
     final params = _getQueryStringParams();
     final uri = Uri(
       path: _location,
       queryParameters: params.isEmpty ? null : params,
     );
-    final str = uri.toString();
-
-    return RouteInformation(location: str);
+    return uri.toString();
   }
 
   Map<String, String> _getQueryStringParams() {
@@ -43,11 +41,11 @@ class ProjectsPageConfiguration extends PageConfiguration {
   @override
   Map<String, dynamic> get state => filter.toJson();
 
-  static ProjectsPageConfiguration? tryParse(RouteInformation ri) {
+  static ProjectsPath? tryParse(RouteInformation ri) {
     final uri = Uri.parse(ri.location ?? '');
     if (uri.path != _location) return null;
 
-    return ProjectsPageConfiguration(
+    return ProjectsPath(
       filter: _stringMapToProjectFilter(uri.queryParameters),
     );
   }

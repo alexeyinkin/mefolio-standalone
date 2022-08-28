@@ -79,12 +79,12 @@ class LazyLoadTrailingWidget extends StatelessWidget {
       errorBuilder;
 
   const LazyLoadTrailingWidget({
-    Key? key,
+    super.key,
     required this.bloc,
     this.loadingBuilder,
     this.noMoreBuilder,
     this.errorBuilder,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

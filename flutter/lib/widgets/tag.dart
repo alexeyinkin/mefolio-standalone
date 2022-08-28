@@ -8,11 +8,11 @@ class TagWidget extends StatelessWidget {
   final VoidCallback onPressed;
 
   const TagWidget({
-    Key? key,
+    super.key,
     required this.tag,
     this.count,
     required this.onPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

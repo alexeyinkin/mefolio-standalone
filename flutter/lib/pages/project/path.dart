@@ -3,30 +3,26 @@ import 'package:flutter/widgets.dart';
 
 import '../../filters/project.dart';
 import '../../router/tab_enum.dart';
-import '../projects/configurations.dart';
+import '../projects/path.dart';
 import 'page.dart';
 
-class ProjectPageConfiguration extends PageConfiguration {
+class ProjectPath extends PagePath {
   final String id;
 
   static final _regExp = RegExp(r'^/projects/([-a-zA-Z0-9.]+)$');
 
-  ProjectPageConfiguration({
+  ProjectPath({
     required this.id,
   }) : super(
           key: ProjectPage.formatKey(id: id),
-          factoryKey: ProjectPage.factoryKey,
+          factoryKey: ProjectPage.classFactoryKey,
           state: {'id': id},
         );
 
   @override
-  RouteInformation restoreRouteInformation() {
-    return RouteInformation(
-      location: '/projects/$id',
-    );
-  }
+  String get location => '/projects/$id';
 
-  static ProjectPageConfiguration? tryParse(RouteInformation ri) {
+  static ProjectPath? tryParse(RouteInformation ri) {
     final matches = _regExp.firstMatch(ri.location ?? '');
     if (matches == null) return null;
 
@@ -36,20 +32,16 @@ class ProjectPageConfiguration extends PageConfiguration {
       return null; // Will never get here with present _regExp.
     }
 
-    return ProjectPageConfiguration(
+    return ProjectPath(
       id: id,
     );
   }
 
   @override
-  PageStackConfiguration get defaultStackConfiguration {
-    return PageStackConfiguration(
-      pageConfigurations: [
-        ProjectsPageConfiguration(filter: const ProjectFilter()),
+  List<PagePath> get defaultStackPaths => [
+        ProjectsPath(filter: const ProjectFilter()),
         this,
-      ],
-    );
-  }
+      ];
 
   @override
   String get defaultStackKey => TabEnum.projects.name;

@@ -10,28 +10,27 @@ environment:
   flutter: ">=3.0.0"
 
 dependencies:
+  app_state: ^0.8.0
   charcode: ^1.3.1
   cloud_firestore: ^3.1.13
   collection: ^1.16.0
+  firebase_core: 1.15.0
+  flutter: { sdk: flutter }
   flutter_markdown: ^0.6.10
   flutter_svg: ^1.1.0
   get_it: ^7.2.0
   google_fonts: ^2.3.2
+  keyed_collection_widgets: ^0.2.0
+  meta: ^1.7.0
+  model_fetch: ^0.3.0
+  model_fetch_firestore: ^0.3.0
+  model_fetch_flutter: ^0.3.0
+  model_interfaces: ^0.1.4
   rxdart: ^0.27.3
   url_launcher: ^6.1.2
   url_strategy: ^0.2.0
   version: ^2.0.0
 
-# Our packages:
-  app_state: ^0.3.5
-  keyed_collection_widgets: ^0.2.0
-  model_interfaces: ^0.1.4
-  model_fetch: ^0.3.0
-  model_fetch_firestore: ^0.3.0
-  model_fetch_flutter: ^0.3.0
-
-#  app_state:
-#    path: '../../../flutter-app-state'
 #  model_fetch:
 #    path: '../../../dart-model-fetch/model_fetch'
 #  model_fetch_firestore:
@@ -39,14 +38,13 @@ dependencies:
 #  model_fetch_flutter:
 #    path: '../../../dart-model-fetch/model_fetch_flutter'
 
-  flutter:
-    sdk: flutter
+#dependency_overrides:
+#  app_state:
+#    path: ../../flutter-app-state/app_state
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
-
-  flutter_lints: ^2.0.1
+  flutter_test: { sdk: flutter }
+  total_lints: ^2.17.4
 
 flutter:
   assets:

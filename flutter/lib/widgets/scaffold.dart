@@ -8,16 +8,16 @@ class MyScaffold extends StatelessWidget {
 
   const MyScaffold({
     required this.body,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: ColoredBox(
         color: AppStyle.colorBlack,
         child: SafeArea(
-          child: Container(
+          child: ColoredBox(
             color: AppStyle.colorWhite,
             child: Column(
               children: [

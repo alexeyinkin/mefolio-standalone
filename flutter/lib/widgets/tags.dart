@@ -13,10 +13,10 @@ class TagsWidget extends StatelessWidget {
   final ValueChanged<String> onPressed;
 
   const TagsWidget({
-    Key? key,
+    super.key,
     required this.tags,
     required this.onPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +50,7 @@ class NewPageTagsWidget extends StatelessWidget {
   }
 
   void _onTagPressed(String tag) {
-    pageStacksBloc.currentStackBloc?.push(
+    pageStacks.currentStack?.push(
       ProjectsPage(
         initialFilter: ProjectFilter(tagsAnd: [tag]),
       ),

@@ -6,10 +6,10 @@ class ClickableWidget extends StatelessWidget {
   final VoidCallback? onTap;
 
   const ClickableWidget({
-    Key? key,
+    super.key,
     required this.child,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

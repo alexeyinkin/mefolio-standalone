@@ -59,7 +59,7 @@ class MySpacing extends StatelessWidget {
 }
 
 class HorizontalBlackLine extends StatelessWidget {
-  const HorizontalBlackLine({Key? key}) : super(key: key);
+  const HorizontalBlackLine({super.key});
 
   @override
   Widget build(BuildContext context) {

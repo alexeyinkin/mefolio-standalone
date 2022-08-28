@@ -5,7 +5,7 @@ import 'versions.dart';
 
 class Global implements WithId<String> {
   @override
-  final String id = singleId;
+  String get id => singleId;
   final List<Contact> contacts;
   final String imageUrl;
   final String title;

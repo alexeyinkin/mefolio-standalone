@@ -13,13 +13,18 @@ class ProjectFilterBloc {
   final _statesController = BehaviorSubject<ProjectFilterBlocState>();
 
   Stream<ProjectFilterBlocState> get states => _statesController.stream;
+
   ProjectFilterBlocState get state => _createState();
 
   ProjectFilter _filter;
 
   FirestoreLiveByIdBloc<ProjectFilterStat>? _statBloc;
   StreamSubscription? _statBlocSubscription;
-  ModelByIdState<String, ProjectFilterStat> _statState = ModelByIdState<String, ProjectFilterStat>(model: null, status: LoadStatus.notTried);
+  ModelByIdState<String, ProjectFilterStat> _statState =
+      ModelByIdState<String, ProjectFilterStat>(
+    model: null,
+    status: LoadStatus.notTried,
+  );
 
   ProjectFilterBloc({
     required ProjectFilter initialFilter,
@@ -29,7 +34,8 @@ class ProjectFilterBloc {
 
   void _updateStatBloc() {
     _statBlocSubscription?.cancel();
-    _statBloc = GetIt.instance.get<ProjectFilterStatRepository>().liveById(_filter.id);
+    _statBloc =
+        GetIt.instance.get<ProjectFilterStatRepository>().liveById(_filter.id);
     _statBlocSubscription = _statBloc?.states.listen(_onStatChange);
   }
 

@@ -47,7 +47,6 @@ class ProjectGridWidget extends StatelessWidget {
     return GridView.builder(
       itemCount: count,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        childAspectRatio: 1,
         crossAxisCount: crossAxisCount,
       ),
       itemBuilder: (context, i) {
@@ -85,12 +84,12 @@ class LazyLoadTrailingWidget extends StatelessWidget {
       errorBuilder;
 
   const LazyLoadTrailingWidget({
-    Key? key,
+    super.key,
     required this.bloc,
     this.loadingBuilder,
     this.noMoreBuilder,
     this.errorBuilder,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

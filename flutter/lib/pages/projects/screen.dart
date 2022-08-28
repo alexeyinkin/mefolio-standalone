@@ -9,8 +9,8 @@ import '../../widgets/scaffold.dart';
 import 'bloc.dart';
 
 class ProjectsScreen
-    extends StatefulBlocWidget<ProjectsPageBloc, ProjectsPageBlocState> {
-  ProjectsScreen({
+    extends StatefulBlocWidget<void, ProjectsPageBloc, ProjectsPageBlocState> {
+  const ProjectsScreen({
     required super.bloc,
   });
 

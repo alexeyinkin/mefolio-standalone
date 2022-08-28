@@ -29,7 +29,7 @@ class ProjectGridCard extends StatelessWidget {
 
   Widget _background() {
     return Positioned.fill(
-      child: Container(
+      child: ColoredBox(
         color: Color(project.view.backgroundColor),
       ),
     );
@@ -74,6 +74,6 @@ class ProjectGridCard extends StatelessWidget {
   }
 
   void _onTap() {
-    pageStacksBloc.currentStackBloc?.push(ProjectPage(id: project.id));
+    pageStacks.currentStack?.push(ProjectPage(id: project.id));
   }
 }

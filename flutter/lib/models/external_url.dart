@@ -17,7 +17,7 @@ class ExternalUrl {
   static List<ExternalUrl> fromMaps(List maps) {
     return maps
         .cast<Map<String, dynamic>>()
-        .map<ExternalUrl>((map) => ExternalUrl.fromMap(map))
+        .map<ExternalUrl>(ExternalUrl.fromMap)
         .toList(growable: false);
   }
 }

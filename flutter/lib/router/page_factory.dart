@@ -1,24 +1,23 @@
 import 'package:app_state/app_state.dart';
 
-import '../filters/project.dart';
 import '../pages/contact/page.dart';
 import '../pages/project/page.dart';
 import '../pages/projects/page.dart';
 
 class PageFactory {
-  static AbstractPage<PageConfiguration>? createPage(
+  static AbstractPage? createPage(
     String factoryKey,
     Map<String, dynamic> state,
   ) {
     switch (factoryKey) {
-      case ContactPage.factoryKey:
-        return ContactPage();
+      case ContactPage.classFactoryKey:
+        return ContactPage.fromState(state);
 
-      case ProjectPage.factoryKey:
-        return ProjectPage(id: state['id']);
+      case ProjectPage.classFactoryKey:
+        return ProjectPage.fromState(state);
 
-      case ProjectsPage.factoryKey:
-        return ProjectsPage(initialFilter: ProjectFilter.fromMap(state));
+      case ProjectsPage.classFactoryKey:
+        return ProjectsPage.fromState(state);
     }
 
     return null;

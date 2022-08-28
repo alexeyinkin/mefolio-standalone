@@ -7,7 +7,7 @@ packages:
       name: app_state
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.3.5"
+    version: "0.8.0"
   args:
     dependency: transitive
     description:
@@ -107,7 +107,7 @@ packages:
     source: hosted
     version: "6.1.2"
   firebase_core:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: firebase_core
       url: "https://pub.dartlang.org"
@@ -132,13 +132,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_lints:
-    dependency: "direct dev"
+  flutter_issue_108697_workaround:
+    dependency: transitive
     description:
-      name: flutter_lints
+      name: flutter_issue_108697_workaround
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.1"
+    version: "0.1.2"
   flutter_markdown:
     dependency: "direct main"
     description:
@@ -205,13 +205,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.0"
-  lints:
-    dependency: transitive
-    description:
-      name: lints
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
   markdown:
     dependency: transitive
     description:
@@ -234,7 +227,7 @@ packages:
     source: hosted
     version: "0.1.4"
   meta:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: meta
       url: "https://pub.dartlang.org"
@@ -372,7 +365,7 @@ packages:
       name: rxdart
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.27.3"
+    version: "0.27.5"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -420,6 +413,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.9"
+  total_lints:
+    dependency: "direct dev"
+    description:
+      name: total_lints
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.17.4"
   typed_data:
     dependency: transitive
     description:

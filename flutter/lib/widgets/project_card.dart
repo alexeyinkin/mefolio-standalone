@@ -13,9 +13,9 @@ class ProjectCard extends StatelessWidget {
   static const twoColumnMinWidth = 600;
 
   const ProjectCard({
-    Key? key,
+    super.key,
     required this.project,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -106,6 +106,6 @@ class ProjectCard extends StatelessWidget {
   }
 
   void _onTap() {
-    pageStacksBloc.currentStackBloc?.push(ProjectPage(id: project.id));
+    pageStacks.currentStack?.push(ProjectPage(id: project.id));
   }
 }

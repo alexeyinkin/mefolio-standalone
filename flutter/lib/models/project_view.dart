@@ -19,7 +19,7 @@ class ProjectView {
     textColor: defaultTextColor,
   );
 
-  static ProjectView fromMapOrNull(Map<String, dynamic>? map) {
+  factory ProjectView.fromMapOrNull(Map<String, dynamic>? map) {
     if (map == null) return empty;
 
     return ProjectView(

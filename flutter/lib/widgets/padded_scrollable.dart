@@ -7,8 +7,8 @@ class PaddedScrollable extends StatelessWidget {
 
   const PaddedScrollable({
     required this.child,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

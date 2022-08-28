@@ -2,10 +2,9 @@ import 'package:app_state/app_state.dart';
 
 import '../../blocs/project_filter.dart';
 import '../../filters/project.dart';
-import 'configurations.dart';
+import 'path.dart';
 
-class ProjectsPageBloc
-    extends PageStatefulBloc<ProjectsPageConfiguration, ProjectsPageBlocState> {
+class ProjectsPageBloc extends PageStatefulBloc<ProjectsPageBlocState, void> {
   final ProjectFilterBloc filterBloc;
 
   ProjectFilterBlocState? _filterBlocState;
@@ -22,18 +21,16 @@ class ProjectsPageBloc
   void _onFilterChange(ProjectFilterBlocState state) {
     _filterBlocState = state;
     emitState();
-    emitConfigurationChanged();
+    emitPathChanged();
   }
 
   @override
-  ProjectsPageConfiguration getConfiguration() {
-    return ProjectsPageConfiguration(
-      filter: _filterBlocState?.filter ?? const ProjectFilter(),
-    );
-  }
+  ProjectsPath get path => ProjectsPath(
+        filter: _filterBlocState?.filter ?? const ProjectFilter(),
+      );
 
   @override
-  createState() {
+  ProjectsPageBlocState createState() {
     return ProjectsPageBlocState(
       filterBlocState: _filterBlocState ?? filterBloc.state,
     );

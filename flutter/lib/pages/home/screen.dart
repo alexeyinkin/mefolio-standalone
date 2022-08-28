@@ -5,29 +5,31 @@ import 'package:keyed_collection_widgets/keyed_collection_widgets.dart';
 import '../../router/tab_enum.dart';
 
 class HomeScreen extends StatelessWidget {
-  final PageStacksBloc pageStacksBloc;
+  final PageStacks pageStacks;
 
-  HomeScreen({
-    required this.pageStacksBloc,
+  const HomeScreen({
+    required this.pageStacks,
   });
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: pageStacksBloc.events,
+      stream: pageStacks.events,
       builder: (context, snapshot) => _buildOnEvent(),
     );
   }
 
   Widget _buildOnEvent() {
-    final tab = TabEnum.values.byName(pageStacksBloc.currentStackKey!);
+    final tab = TabEnum.values.byName(pageStacks.currentStackKey!);
 
     return Scaffold(
       body: KeyedStack<TabEnum>(
         itemKey: tab,
-        children: pageStacksBloc.pageStacks.map((tabString, bloc) => MapEntry(
-          TabEnum.values.byName(tabString),
-          PageStackBlocNavigator(key: ValueKey(tabString), bloc: bloc)),
+        children: pageStacks.pageStacks.map(
+          (tabString, stack) => MapEntry(
+            TabEnum.values.byName(tabString),
+            PageStackNavigator(key: ValueKey(tabString), stack: stack),
+          ),
         ),
       ),
       bottomNavigationBar: KeyedBottomNavigationBar<TabEnum>(
@@ -42,8 +44,18 @@ class HomeScreen extends StatelessWidget {
             label: 'Contact',
           ),
         },
-        onTap: (tab) => pageStacksBloc.setCurrentStackKey(tab.name),
+        onTap: _onTabTap,
       ),
     );
+  }
+
+  void _onTabTap(TabEnum tab) {
+    final key = tab.name;
+
+    if (pageStacks.currentStackKey == key) {
+      pageStacks.currentStack?.popUntilBottom();
+    } else {
+      pageStacks.setCurrentStackKey(key);
+    }
   }
 }

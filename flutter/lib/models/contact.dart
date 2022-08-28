@@ -17,7 +17,7 @@ class Contact {
   static List<Contact> fromMaps(List maps) {
     return maps
         .cast<Map<String, dynamic>>()
-        .map((map) => Contact.fromMap(map))
+        .map(Contact.fromMap)
         .toList(growable: false);
   }
 }

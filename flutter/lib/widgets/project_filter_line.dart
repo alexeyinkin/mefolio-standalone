@@ -9,7 +9,7 @@ import 'tag.dart';
 class ProjectFilterLineWidget extends StatelessWidget {
   final ProjectFilterBloc projectFilterBloc;
 
-  ProjectFilterLineWidget({
+  const ProjectFilterLineWidget({
     required this.projectFilterBloc,
   });
 
@@ -60,7 +60,7 @@ class ProjectFilterLineWidget extends StatelessWidget {
       case LoadStatus.loading:
         return const Text("Loading...");
 
-      default:
+      case LoadStatus.ok:
         final count = statState.model?.count;
         return Text("Showing $count");
     }
@@ -100,14 +100,14 @@ class ProjectFilterLineWidget extends StatelessWidget {
         .toList(growable: false);
   }
 
-  void _onFilterPressed() {}
+  // void _onFilterPressed() {}
 }
 
 class FilterTagWidget extends StatelessWidget {
   final Widget child;
   final VoidCallback onRemovePressed;
 
-  FilterTagWidget({
+  const FilterTagWidget({
     required this.child,
     required this.onRemovePressed,
   });

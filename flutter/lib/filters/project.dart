@@ -16,7 +16,7 @@ class ProjectFilter extends AbstractFilter {
     this.year,
   });
 
-  static ProjectFilter fromMap(Map<String, dynamic> map) {
+  factory ProjectFilter.fromMap(Map<String, dynamic> map) {
     return ProjectFilter(
       tagsAnd: _parseTagsAnd(map),
       year: _parseYear(map),
@@ -31,14 +31,14 @@ class ProjectFilter extends AbstractFilter {
   }
 
   static List<String>? _parseTagsAnd(Map<String, dynamic> map) {
-    return map['tags']?.cast<String>();
+    return (map['tags'] as List?)?.cast<String>();
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      if (tagsAnd != null) "tags": tagsAnd,
-      if (year != null) "year": year,
+      if (tagsAnd != null) 'tags': tagsAnd,
+      if (year != null) 'year': year,
     };
   }
 
@@ -66,7 +66,7 @@ class ProjectFilter extends AbstractFilter {
   ProjectFilter andTag(String tag) {
     if ((tagsAnd ?? []).contains(tag)) return this;
 
-    final newTagsAnd = [...(tagsAnd ?? <String>[]), tag];
+    final newTagsAnd = [...tagsAnd ?? <String>[], tag];
     return withTagsAnd(newTagsAnd);
   }
 

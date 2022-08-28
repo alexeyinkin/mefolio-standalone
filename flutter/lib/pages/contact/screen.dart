@@ -9,7 +9,7 @@ import '../../widgets/scaffold.dart';
 import 'widgets/contacts.dart';
 
 class ContactScreen extends StatelessWidget {
-  const ContactScreen({Key? key}) : super(key: key);
+  const ContactScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +24,15 @@ class ContactScreen extends StatelessWidget {
   }
 
   Widget _buildWithState(Global? global) {
-    if (global == null) return Text("...");
+    if (global == null) return const Text("...");
 
-    return LayoutBuilder(builder: (context, constraints) {
-      return constraints.maxHeight > constraints.maxWidth
-          ? _buildVertical(global)
-          : _buildHorizontal(global);
-    });
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return constraints.maxHeight > constraints.maxWidth
+            ? _buildVertical(global)
+            : _buildHorizontal(global);
+      },
+    );
   }
 
   Widget _buildVertical(Global global) {

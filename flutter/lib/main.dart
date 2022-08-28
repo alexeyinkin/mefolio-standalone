@@ -14,7 +14,7 @@ import 'router/route_information_parser.dart';
 import 'router/tab_enum.dart';
 import 'theme/theme.dart';
 
-final pageStacksBloc = PageStacksBloc();
+final pageStacks = PageStacks();
 
 void main() async {
   setPathUrlStrategy();
@@ -25,39 +25,39 @@ void main() async {
 
   await initializeServiceLocator();
 
-  pageStacksBloc.addPageStack(
+  pageStacks.addPageStack(
     TabEnum.projects.name,
-    PageStackBloc<PageConfiguration>(
+    PageStack(
       bottomPage: ProjectsPage(initialFilter: const ProjectFilter()),
       createPage: PageFactory.createPage,
     ),
   );
 
-  pageStacksBloc.addPageStack(
+  pageStacks.addPageStack(
     TabEnum.contact.name,
-    PageStackBloc<PageConfiguration>(
+    PageStack(
       bottomPage: ContactPage(),
       createPage: PageFactory.createPage,
     ),
   );
 
-  pageStacksBloc.setCurrentStackKey(TabEnum.projects.name, fire: false);
+  pageStacks.setCurrentStackKey(TabEnum.projects.name, fire: false);
 
   runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
   @override
-  _MyAppState createState() => _MyAppState();
+  State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
   final _routerDelegate = MaterialPageStacksRouterDelegate(
-    pageStacksBloc: pageStacksBloc,
-    child: HomeScreen(pageStacksBloc: pageStacksBloc),
+    pageStacks,
+    child: HomeScreen(pageStacks: pageStacks),
   );
   final _routeInformationParser = MyRouteInformationParser();
-  final _backButtonDispatcher = PageStacksBackButtonDispatcher(pageStacksBloc);
+  final _backButtonDispatcher = PageStacksBackButtonDispatcher(pageStacks);
 
   @override
   Widget build(BuildContext context) {

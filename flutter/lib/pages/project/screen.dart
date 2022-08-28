@@ -12,8 +12,8 @@ import '../../widgets/urls.dart';
 import 'bloc.dart';
 
 class ProjectScreen
-    extends StatefulBlocWidget<ProjectPageBloc, ProjectPageBlocState> {
-  const ProjectScreen({required ProjectPageBloc bloc}) : super(bloc: bloc);
+    extends StatefulBlocWidget<void, ProjectPageBloc, ProjectPageBlocState> {
+  const ProjectScreen({required super.bloc});
 
   @override
   Widget buildWithState(BuildContext context, ProjectPageBlocState? state) {

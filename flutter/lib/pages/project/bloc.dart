@@ -4,10 +4,10 @@ import 'package:model_fetch/model_fetch.dart';
 
 import '../../models/project.dart';
 import '../../repositories/project.dart';
-import 'configurations.dart';
+import 'path.dart';
 
 class ProjectPageBloc
-    extends PageStatefulBloc<ProjectPageConfiguration, ProjectPageBlocState> {
+    extends PageStatefulBloc<ProjectPageBlocState, void> {
   final ModelByIdBloc<String, Project> modelByIdBloc;
   final String id;
 
@@ -30,9 +30,7 @@ class ProjectPageBloc
   }
 
   @override
-  ProjectPageConfiguration getConfiguration() {
-    return ProjectPageConfiguration(id: id);
-  }
+  ProjectPath get path => ProjectPath(id: id);
 }
 
 class ProjectPageBlocState {
